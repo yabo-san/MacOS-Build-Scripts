@@ -127,7 +127,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 
 mv Info.plist ~/sm64.app/Contents/
 
-curl https://github.com/Eclipse-5214/sm64-MacOS/raw/main/sm64.icns >> sm64.icns
+curl https://github.com/Eclipse-5214/sm64-MacOS/raw/main/sm64.icns
+base64 --decode -i appicons.txt -o sm64.icns
+
 mv sm64.icns ~/sm64.app/Contents/Resources
 
 echo "
@@ -139,6 +141,7 @@ This needs root to do
 "
 
 sudo rm -r ~/sm64ex
+sudo rm appicons.txt
 
 echo "
 ***************************************
