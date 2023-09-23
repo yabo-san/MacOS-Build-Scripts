@@ -68,19 +68,7 @@ echo "
 
 cp "$path" ~/sm64ex/baserom.$lang.z64
 cd ~/sm64ex
-./extract_assets.py $lang --quiet > /dev/null &
-
-pid=$! ; i=0
-spin='◐◓◑◒'
-while ps -a | awk '{print $1}' | grep -q "${pid}"
-do
-  i=$(( (i+1) %4 ))
-  printf "\rGetting Assets [${spin:$i:1}]"
-  sleep .1
-done
-
-wait ${PID}
-ret=$?
+./extract_assets.py $lang
 
 echo "
 ***************************************
