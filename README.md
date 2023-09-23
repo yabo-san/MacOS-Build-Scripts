@@ -5,7 +5,6 @@ This script automatically builds [sm64ex](https://github.com/sm64pc/sm64ex) for 
 ## How to install
 
 **\[!\] IMPORTANT \[!\]**
-
 you need your own rom and it has to be .z64
 
 once you got it just run this command and enjoy
