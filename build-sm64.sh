@@ -120,7 +120,7 @@ done
 wait ${PID}
 ret=$?
 
-clar
+cler
 
 echo "
 ***************************************
@@ -190,6 +190,8 @@ This needs root to do
 
 sudo rm -r ~/sm64ex
 sudo rm appicons.txt
+
+clear
 
 echo "
 ***************************************
