@@ -52,8 +52,8 @@ done
 wait ${PID}
 ret=$?
 
-echo "
-where is the path to your rom file [must be .z64]"
+echo
+echo "where is the path to your rom file [must be .z64]"
 read path
 
 echo "
