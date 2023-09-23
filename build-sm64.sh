@@ -57,14 +57,18 @@ echo "
 cp "$path" ~/sm64ex/baserom.$lang.z64
 cd ~/sm64ex
 ./extract_assets.py $lang &
-PID=$!
-i=1
-sp="/-\|"
-echo -n ' '
-while [ -d /proc/$PID ]
+
+pid=$! ; i=0
+spin='◐◓◑◒'
+while ps -a | awk '{print $1}' | grep -q "${pid}"
 do
-  printf "\b${sp:i++%${#sp}:1}"
+  i=$(( (i+1) %4 ))
+  printf "\rGetting Assets [${spin:$i:1}]"
+  sleep .1
 done
+
+wait ${PID}
+ret=$?
 
 echo "
 ***************************************
@@ -81,14 +85,18 @@ echo "
 "
 
 gmake OSX_BUILD=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1 -j 8 &
-PID=$!
-i=1
-sp="/-\|"
-echo -n ' '
-while [ -d /proc/$PID ]
+
+pid=$! ; i=0
+spin='◐◓◑◒'
+while ps -a | awk '{print $1}' | grep -q "${pid}"
 do
-  printf "\b${sp:i++%${#sp}:1}"
+  i=$(( (i+1) %4 ))
+  printf "\rBuilding [${spin:$i:1}]"
+  sleep .1
 done
+
+wait ${PID}
+ret=$?
 
 echo "
 ***************************************
