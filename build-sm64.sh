@@ -38,7 +38,7 @@ echo "
 "
 
 cd ~
-git clone https://github.com/sm64pc/sm64ex > /dev/null 2> &
+git clone --quiet https://github.com/sm64pc/sm64ex &
 
 pid=$! ; i=0
 spin='◐◓◑◒'
