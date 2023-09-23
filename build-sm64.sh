@@ -68,7 +68,7 @@ echo "
 
 cp "$path" ~/sm64ex/baserom.$lang.z64
 cd ~/sm64ex
-./extract_assets.py $lang > /dev/null 2> &
+./extract_assets.py $lang --quiet > /dev/null &
 
 pid=$! ; i=0
 spin='◐◓◑◒'
@@ -96,7 +96,7 @@ echo "
 ***************************************
 "
 
-gmake OSX_BUILD=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1 -j 8 > /dev/null 2> &
+gmake OSX_BUILD=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1 -j 8 --quiet > /dev/null &
 
 pid=$! ; i=0
 spin='◐◓◑◒'
