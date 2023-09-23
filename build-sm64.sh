@@ -71,21 +71,16 @@ sleep 1
 
 cp "$path" ~/sm64ex/baserom.$lang.z64
 cd ~/sm64ex
-./extract_assets.py $lang &
+./extract_assets.py $lang > temp.txt &
 
 pid=$! ; i=0
 spin='◐◓◑◒'
 while ps -a | awk '{print $1}' | grep -q "${pid}"
 do
   i=$(( (i+1) %4 ))
-  printf "Getting Assets [${spin:$i:1}]"
+  printf "/rGetting Assets [${spin:$i:1}]"
   sleep .1
-done & 
-while ps -a | awk '{print $1}' | grep -q "${pid}"
-do
-  clear
 done
-
 
 wait ${PID}
 ret=$?
@@ -116,12 +111,8 @@ while ps -a | awk '{print $1}' | grep -q "${pid}"
 do
   i=$(( (i+1) %4 ))
   clear
-  printf "Building [${spin:$i:1}]"
+  printf "/rBuilding [${spin:$i:1}]"
   sleep .1
-done & 
-while ps -a | awk '{print $1}' | grep -q "${pid}"
-do
-  clear
 done
 
 wait ${PID}
