@@ -80,7 +80,7 @@ spin='◐◓◑◒'
 while ps -a | awk '{print $1}' | grep -q "${pid}"
 do
   i=$(( (i+1) %4 ))
-  printf "/rGetting Assets [${spin:$i:1}]"
+  printf "\rGetting Assets [${spin:$i:1}]"
   sleep .1
 done
 
@@ -112,7 +112,7 @@ spin='◐◓◑◒'
 while ps -a | awk '{print $1}' | grep -q "${pid}"
 do
   i=$(( (i+1) %4 ))
-  printf "/rBuilding [${spin:$i:1}]"
+  printf "\rBuilding [${spin:$i:1}]"
   sleep .1
 done
 
