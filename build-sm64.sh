@@ -84,7 +84,7 @@ echo "
 ***************************************
 "
 
-gmake OSX_BUILD=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1 -j 8 --quiet > /dev/null &
+gmake OSX_BUILD=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1 -j 8 --quiet > temp.txt &
 
 pid=$! ; i=0
 spin='◐◓◑◒'
