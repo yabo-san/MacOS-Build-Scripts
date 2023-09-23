@@ -31,6 +31,8 @@ echo "
 "
 brew install git python3 mingw-w64 gcc make pkg-config glfw glew sdl2 libusb
 
+clear
+
 echo "
 ***************************************
           cloning into repo
