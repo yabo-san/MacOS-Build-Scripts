@@ -4,12 +4,12 @@ This script automatically builds [sm64ex](https://github.com/sm64pc/sm64ex) for 
 
 ## How to install
 
-*[!] IMPORTANT [!]*
+**\[!\] IMPORTANT \[!\]**
+
 you need your own rom and it has to be .z64
 
-once you got it just run
+once you got it just run this command and enjoy
 
 ```bash
 /bin/bash -c "$(curl https://raw.githubusercontent.com/Eclipse-5214/sm64-MacOS/main/build-sm64.sh)"
 ```
-and enjoy
