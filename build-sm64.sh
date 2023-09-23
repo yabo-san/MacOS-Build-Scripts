@@ -52,7 +52,7 @@ done
 wait ${PID}
 ret=$?
 
-echo
+clear
 echo "where is the path to your rom file [must be .z64]"
 read path
 
@@ -60,11 +60,14 @@ echo "
 what language is your rom [jp] [us] [eu] [sh]"
 read lang
 
+clear
+
 echo "
 ***************************************
            getting assets
 ***************************************
 "
+sleep 1
 
 cp "$path" ~/sm64ex/baserom.$lang.z64
 cd ~/sm64ex
@@ -75,13 +78,19 @@ spin='◐◓◑◒'
 while ps -a | awk '{print $1}' | grep -q "${pid}"
 do
   i=$(( (i+1) %4 ))
-  clear
   printf "Getting Assets [${spin:$i:1}]"
   sleep .1
+done & 
+while ps -a | awk '{print $1}' | grep -q "${pid}"
+do
+  clear
 done
+
 
 wait ${PID}
 ret=$?
+
+clear
 
 echo "
 ***************************************
@@ -90,6 +99,8 @@ echo "
 "
 
 ./tools/apply_patch.sh ./enhancements/60fps_ex.patch
+
+clear
 
 echo "
 ***************************************
@@ -107,10 +118,16 @@ do
   clear
   printf "Building [${spin:$i:1}]"
   sleep .1
+done & 
+while ps -a | awk '{print $1}' | grep -q "${pid}"
+do
+  clear
 done
 
 wait ${PID}
 ret=$?
+
+clar
 
 echo "
 ***************************************
