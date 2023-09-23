@@ -38,7 +38,19 @@ echo "
 "
 
 cd ~
-git clone https://github.com/sm64pc/sm64ex
+git clone https://github.com/sm64pc/sm64ex > /dev/null 2> &
+
+pid=$! ; i=0
+spin='◐◓◑◒'
+while ps -a | awk '{print $1}' | grep -q "${pid}"
+do
+  i=$(( (i+1) %4 ))
+  printf "\rCloning [${spin:$i:1}]"
+  sleep .1
+done
+
+wait ${PID}
+ret=$?
 
 echo "
 where is the path to your rom file [must be .z64]"
@@ -56,7 +68,7 @@ echo "
 
 cp "$path" ~/sm64ex/baserom.$lang.z64
 cd ~/sm64ex
-./extract_assets.py $lang &
+./extract_assets.py $lang > /dev/null 2> &
 
 pid=$! ; i=0
 spin='◐◓◑◒'
@@ -84,7 +96,7 @@ echo "
 ***************************************
 "
 
-gmake OSX_BUILD=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1 -j 8 &
+gmake OSX_BUILD=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1 -j 8 > /dev/null 2> &
 
 pid=$! ; i=0
 spin='◐◓◑◒'
