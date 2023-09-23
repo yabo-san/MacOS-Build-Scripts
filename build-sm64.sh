@@ -112,7 +112,6 @@ spin='◐◓◑◒'
 while ps -a | awk '{print $1}' | grep -q "${pid}"
 do
   i=$(( (i+1) %4 ))
-  clear
   printf "/rBuilding [${spin:$i:1}]"
   sleep .1
 done
