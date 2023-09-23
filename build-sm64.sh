@@ -56,7 +56,15 @@ echo "
 
 cp "$path" ~/sm64ex/baserom.$lang.z64
 cd ~/sm64ex
-./extract_assets.py $lang
+./extract_assets.py $lang &
+PID=$!
+i=1
+sp="/-\|"
+echo -n ' '
+while [ -d /proc/$PID ]
+do
+  printf "\b${sp:i++%${#sp}:1}"
+done
 
 echo "
 ***************************************
@@ -72,7 +80,15 @@ echo "
 ***************************************
 "
 
-gmake OSX_BUILD=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1 -j 8
+gmake OSX_BUILD=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1 -j 8 &
+PID=$!
+i=1
+sp="/-\|"
+echo -n ' '
+while [ -d /proc/$PID ]
+do
+  printf "\b${sp:i++%${#sp}:1}"
+done
 
 echo "
 ***************************************
@@ -127,7 +143,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 
 mv Info.plist ~/sm64.app/Contents/
 
-curl https://raw.githubusercontent.com/Eclipse-5214/sm64-MacOS/main/appicons.txt
+curl https://raw.githubusercontent.com/Eclipse-5214/sm64-MacOS/main/appicons.txt > appicons.txt
 base64 --decode -i appicons.txt -o sm64.icns
 
 mv sm64.icns ~/sm64.app/Contents/Resources
