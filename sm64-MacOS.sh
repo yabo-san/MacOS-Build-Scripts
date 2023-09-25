@@ -54,20 +54,10 @@ echo "
 "
 
 cd ~
-git clone --quiet https://github.com/sm64pc/sm64ex &
 
-pid=$! ; i=0
-spin='◐◓◑◒'
-while ps -a | awk '{print $1}' | grep -q "${pid}"
-do
-  i=$(( (i+1) %4 ))
-  printf "\rCloning [${spin:$i:1}]"
-  sleep .1
-done
-
-wait ${PID}
-ret=$?
-
+start_spinner
+git clone --quiet https://github.com/sm64pc/sm64ex 
+stop_spinner
 clear
 echo "where is the path to your rom file [must be .z64]"
 read path
