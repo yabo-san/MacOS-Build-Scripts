@@ -58,7 +58,9 @@ cd ~
 start_spinner
 git clone --quiet https://github.com/sm64pc/sm64ex 
 stop_spinner
+
 clear
+
 echo "where is the path to your rom file [must be .z64]"
 read path
 
