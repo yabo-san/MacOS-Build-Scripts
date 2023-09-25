@@ -1,5 +1,19 @@
 #!/bin/bash
 
+alias spin='while :; do for s in ◐◓◑◒; do printf "\r$s"; sleep .1; done; done'
+
+spinner_pid=
+function start_spinner {
+    set +m
+    spin &
+    spinner_pid=$!
+}
+
+function stop_spinner {
+    kill -9 $spinner_pid
+    set -m
+}
+
 clear
 
 echo "
@@ -73,19 +87,9 @@ sleep 1
 
 cp "$path" ~/sm64ex/baserom.$lang.z64
 cd ~/sm64ex
-./extract_assets.py $lang > temp.txt &
-
-pid=$! ; i=0
-spin='◐◓◑◒'
-while ps -a | awk '{print $1}' | grep -q "${pid}"
-do
-  i=$(( (i+1) %4 ))
-  printf "\rGetting Assets [${spin:$i:1}]"
-  sleep .1
-done
-
-wait ${PID}
-ret=$?
+start_spinner
+python3 extract_assets.py $lang > /dev/null 2>&1
+stop_spinner
 
 clear
 
@@ -104,22 +108,11 @@ echo "
               building
 ***************************************
 "
+start_spinner
+gmake OSX_BUILD=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1 -j 8 > /dev/null 2>&1
+stop_spinner
 
-gmake OSX_BUILD=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1 -j 8 --quiet > temp.txt &
-
-pid=$! ; i=0
-spin='◐◓◑◒'
-while ps -a | awk '{print $1}' | grep -q "${pid}"
-do
-  i=$(( (i+1) %4 ))
-  printf "\rBuilding [${spin:$i:1}]"
-  sleep .1
-done
-
-wait ${PID}
-ret=$?
-
-cler
+clear
 
 echo "
 ***************************************
