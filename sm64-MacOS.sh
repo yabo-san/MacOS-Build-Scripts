@@ -40,12 +40,17 @@ else
     echo
 fi
 
+clear
+
 echo "
 ***************************************
        installing dependencies
 ***************************************
 "
+
+start_spinner "installing dependencies"
 brew install git python3 mingw-w64 gcc make pkg-config glfw glew sdl2 libusb
+stop_spinner
 
 clear
 
@@ -57,9 +62,11 @@ echo "
 
 cd ~
 
-start_spinner
+start_spinner "cloning"
 git clone --quiet https://github.com/sm64pc/sm64ex 
 stop_spinner
+
+#Queiry for assets
 
 clear
 
@@ -77,11 +84,11 @@ echo "
            getting assets
 ***************************************
 "
-sleep 1
 
 cp "$path" ~/sm64ex/baserom.$lang.z64
 cd ~/sm64ex
-start_spinner
+
+start_spinner "getting assets"
 python3 extract_assets.py $lang > /dev/null 2>&1
 stop_spinner
 
@@ -102,7 +109,7 @@ echo "
               building
 ***************************************
 "
-start_spinner
+start_spinner "building"
 gmake OSX_BUILD=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1 -j 8 > /dev/null 2>&1
 stop_spinner
 
@@ -114,6 +121,7 @@ echo "
 ***************************************
 "
 
+start spinner "packing"
 mkdir -p ~/sm64.app/Contents/MacOS
 cd ~
 mv ~/sm64ex/build/us_pc/sm64.us.f3dex2e ~/sm64.app/Contents/MacOS/sm64
@@ -165,6 +173,9 @@ curl https://raw.githubusercontent.com/Eclipse-5214/sm64-MacOS/main/appicons.txt
 base64 --decode -i appicons.txt -o sm64.icns
 
 mv sm64.icns ~/sm64.app/Contents/Resources
+stop_spinner
+
+clear
 
 echo "
 ***************************************
