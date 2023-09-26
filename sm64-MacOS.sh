@@ -23,21 +23,24 @@ echo "
         SCRIPT BY ECLIPSE5214
 ***************************************
 "
+sleep 1
 
-echo is homebrew installed [y] [n]
-read hb
-
-
-if [ "$hb" != "${hb#[Nn]}" ] 
-then
+if [[ $(command -v brew) == "" ]]; then
     echo "
 ***************************************
          installing homebrew
 ***************************************
 "
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-    echo
+	echo "
+***************************************
+          updating homebrew
+***************************************
+"
+	start_spinner "updating"
+    brew update
+	stop_spinner
 fi
 
 clear
