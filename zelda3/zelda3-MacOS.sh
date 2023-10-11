@@ -182,7 +182,7 @@ mv Info.plist ~/sm64.app/Contents/
 
 wget https://github.com/Eclipse-5214/sm64-MacOS/raw/main/zelda3/zelda3.icns
 
-mv zelda3.icns ~/zelda3.app/Contents/Resources
+mv zelda3.icns ~/zelda3.app/Contents/Resources/
 stop_spinner
 
 clear
