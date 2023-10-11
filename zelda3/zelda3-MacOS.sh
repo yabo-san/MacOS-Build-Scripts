@@ -185,7 +185,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 
 mv Info.plist ~/sm64.app/Contents/
 
-wget https://github.com/Eclipse-5214/sm64-MacOS/raw/main/zelda3/zelda3.icns
+wget https://github.com/Eclipse-5214/MacOS-Build-Scripts/raw/main/zelda3/zelda3.icns
 
 mv zelda3.icns ~/zelda3.app/Contents/Resources/
 stop_spinner
