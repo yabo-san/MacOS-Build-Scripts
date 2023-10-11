@@ -1,6 +1,6 @@
 # Zelda3 MacOS Build Script
 
-This script automatically builds [sm64ex](https://github.com/sm64pc/sm64ex) for MacOS, and packs it into an application. very cool
+This script automatically builds [zelda3](https://github.com/snesrev/zelda3) for MacOS, and packs it into an application. very cool
 
 ## How to install
 
