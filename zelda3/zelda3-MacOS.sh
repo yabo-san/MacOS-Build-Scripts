@@ -132,6 +132,9 @@ cd $CURRENTPATH
 cd ../Resources
 ./zelda3' >> ~/zelda3.app/Contents/MacOS/zelda3
 
+cd ~/zelda3.app/Contents/
+mkdir Resources
+
 cd ~
 mv ~/zelda3/zelda3 ~/zelda3.app/Contents/Resources/zelda3
 mv ~/zelda3/zelda3.ini ~/zelda3.app/Contents/Resources/
