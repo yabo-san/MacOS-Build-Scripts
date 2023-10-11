@@ -132,6 +132,8 @@ cd $CURRENTPATH
 cd ../Resources
 ./zelda3' >> ~/zelda3.app/Contents/MacOS/zelda3
 
+chmod +x ~/zelda3.app/Contents/MacOS/zelda3
+
 cd ~/zelda3.app/Contents/
 mkdir Resources
 
