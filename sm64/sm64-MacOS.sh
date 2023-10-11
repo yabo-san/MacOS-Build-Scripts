@@ -188,7 +188,6 @@ This needs root to do
 "
 
 sudo rm -r ~/sm64ex
-sudo rm appicons.txt
 
 clear
 
