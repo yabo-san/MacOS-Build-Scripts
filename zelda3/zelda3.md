@@ -10,5 +10,5 @@ you need your own USA rom and it has to be .sfc
 once you got it just run this command and enjoy
 
 ```bash
-/bin/bash -c "$(curl https://raw.githubusercontent.com/Eclipse-5214/sm64-MacOS/main/zelda3/zelda3-MacOS.sh)"
+/bin/bash -c "$(curl https://raw.githubusercontent.com/Eclipse-5214/MacOS-Build-Scripts/main/zelda3/zelda3-MacOS.sh)"
 ```
