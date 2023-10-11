@@ -5,7 +5,7 @@ This script automatically builds [zelda3](https://github.com/snesrev/zelda3) for
 ## How to install
 
 **\[!\] IMPORTANT \[!\]**
-you need your own rom and it has to be .z64
+you need your own USA rom and it has to be .sfc
 
 once you got it just run this command and enjoy
 
